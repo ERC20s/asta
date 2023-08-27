@@ -1,4 +1,4 @@
-import { engine, GltfContainer, Transform, pointerEventsSystem, InputAction, UiText} from '@dcl/sdk/ecs'
+import { engine, GltfContainer, Transform, pointerEventsSystem, InputAction, ColliderLayer} from '@dcl/sdk/ecs'
 import {acala} from './parachains/acala'
 import {moonbeam} from './parachains/moonbeam'
   import { Color4 } from '@dcl/sdk/math'
@@ -15,25 +15,103 @@ export function parachainz() {
         "Acala",
         "Moonbeam",
         "Astar",
-        // ... add texts for all 30 items
+        "Parallel",
+        "clover",
+        "efinity",
+        "composable",
+        "centrifuge",
+        "hydradx",
+        "interlay",
+        "nodle",
+        "equilibrium",
+        "phala",
+        "unique",
+        "litentry",
+        "polkadex",
+        "origintrail",
+        "bifrost",
+        "coinversation",
+        "totem",
+        "darwinium",
+        "parathread2055",
+        "integree",
+        "kilt",
+        "kylin",
+        "aventus",
+        "watr",
+        "oak",
+        "bitgreen",
+        "crust",
+        "ajuna",
+        "zeitgeist",
+        "frequency",
+        "omni",
+        "pendulum",
+        "bittensor",
+        "subsocial",
+        "aleph",
+        "manta",
+        "hashed",
+        "t3rn",
+        "moonsama",
     ];
     
     // Custom functions for each item's pointer down event
     const pointerDownFunctions: Array<() => void> = [
         () => { acala(); selected = "Acala", setupUi(); },
         () => { moonbeam(), selected = "Moonbeam", setupUi(); },
-        () => { console.log("Action for Item 3"); },
-        // ... add functions for all 30 items
+        () => { console.log("Action for Item 2"), selected = "Astar", setupUi(); },
+        () => { console.log("Action for Item 3"), selected = "Parallel", setupUi(); },
+        () => { console.log("Action for Item not selected"); },
+        () => { console.log("Action for Item 5"); },
+        () => { console.log("Action for Item 6"); },
+        () => { console.log("Action for Item 7"); },
+        () => { console.log("Action for Item 8"); },
+        () => { console.log("Action for Item 9"); },
+        () => { console.log("Action for Item 10"); },
+        () => { console.log("Action for Item 11"); },
+        () => { console.log("Action for Item 12"); },
+        () => { console.log("Action for Item 13"); },
+        () => { console.log("Action for Item 14"); },
+        () => { console.log("Action for Item 15"); },
+        () => { console.log("Action for Item 16"); },
+        () => { console.log("Action for Item 17"); },
+        () => { console.log("Action for Item 18"); },
+        () => { console.log("Action for Item 19"); },
+        () => { console.log("Action for Item 20"); },
+        () => { console.log("Action for Item 21"); },
+        () => { console.log("Action for Item 22"); },
+        () => { console.log("Action for Item 23"); },
+        () => { console.log("Action for Item 24"); },
+        () => { console.log("Action for Item 25"); },
+        () => { console.log("Action for Item 26"); },
+        () => { console.log("Action for Item 27"); },
+        () => { console.log("Action for Item 28"); },
+        () => { console.log("Action for Item 29"); },
+        () => { console.log("Action for Item 30"); },
+        () => { console.log("Action for Item 31"); },
+        () => { console.log("Action for Item 32"); },
+        () => { console.log("Action for Item 33"); },
+        () => { console.log("Action for Item 34"); },
+        () => { console.log("Action for Item 35"); },
+        () => { console.log("Action for Item 36"); },
+        () => { console.log("Action for Item 37"); },
+        () => { console.log("Action for Item 38"); },
+        () => { console.log("Action for Item 39"); },
+        () => { console.log("Action for Item 40"); },
+        () => { console.log("Action for Item 41"); },
+        () => { console.log("Action for Item 42"); },
     ];
     
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 1; i <= 42; i++) {
         console.log(`Creating ITEM ${i}`);
       
         // Store each entity in the items object with a dynamic key
         items[`item${i}`] = engine.addEntity();
       
         GltfContainer.create(items[`item${i}`], {
-            src: `models/item${i}.gltf`,
+            src: `models/${i}.glb`,
+            visibleMeshesCollisionMask: ColliderLayer.CL_POINTER,
         });
     
         pointerEventsSystem.onPointerDown({
